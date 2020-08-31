@@ -48,6 +48,16 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Publisher count: " + publisherRepository.count());
 
+        betterPlace.setPublisher(publisher);
+        mewt.setPublisher(publisher);
+        publisher.getBooks().add(betterPlace);
+        publisher.getBooks().add(mewt);
+
+        bookRepository.save(betterPlace);
+        bookRepository.save(mewt);
+        publisherRepository.save(publisher);
+
+        System.out.println("Number of books for this publisher: " + publisher.getBooks().size());
 
     }
 }
